@@ -118,36 +118,50 @@ ul {
     background-color: rgba(0, 0, 0, 0.6);
 }
 .card.big {
+    box-sizing: border-box;
     position: absolute;
-    width: 450px;
-    height: 200px;
-    margin: auto;
-    padding: 15px;
-    top: 0; left: 0; bottom: 100px; right: 0;
     z-index: 3;
+    top: 20%; 
+    left: 0; 
+    right: 0;
+    width: 450px;
+    max-height: 70%;
+    min-height: 230px;
+    padding: 15px;
+    margin: 0 auto;   
 }
-.card.big input[type=text], textarea {
-    width : 100%;
-    margin: 3px 0;
-    font-size: 13px;
-    border: none;
+.card.big input[type=text], 
+.card.big textarea {
+    box-sizing: border-box;
+    display: block;
+    min-width : 100%;
+    max-width: 100%;
+    margin-bottom: 10px;
+    padding: 5px 2px;
+    font-size: 16px;
+    border: solid thin #999;
 }
 .card.big input[type=text] {
     font-size: 20px;
-    font-weight: bold;}
+    font-weight: bold;
+}
 .card.big input[type=text]:focus,
 .card.big textarea:focus {
     outline: dashed thin #999;
-    outline-offset: 2px;
+    outline-offset: 1px;
 }
 .card.big label {
-    margin: 3px 0 7px 3px;
-    color: #a7a7a7;
     display: inline-block;
-    width: 60px;
+    margin-bottom: 10px;    
+}
+.card.big label span {
+    display: inline-block;
+    vertical-align: bottom;
+    width: 70px;
+    color: #a7a7a7;
+    line-height: 1;
 }
 .actions {
-    margin-top: 10px;
     text-align: right;
 }
 .card.big button {
