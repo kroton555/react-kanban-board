@@ -9,6 +9,18 @@
 
 <body>
   <div id='root'></div>
+
+  <script src="https://www.gstatic.com/firebasejs/3.6.6/firebase.js"></script>
+  <script>
+    var config = {
+      apiKey: "AIzaSyDO001FHq42P6-sDNUTqJcef-Yt4Eg9Sjk",
+      authDomain: "react-canban-board.firebaseapp.com",
+      databaseURL: "https://react-canban-board.firebaseio.com",
+      storageBucket: "react-canban-board.appspot.com",
+      messagingSenderId: "684213539762"
+    };
+    firebase.initializeApp(config);
+  </script>
   <script src="bundle.js"></script>
 </body>
 

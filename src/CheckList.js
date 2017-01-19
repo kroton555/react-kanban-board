@@ -39,7 +39,7 @@ class CheckList extends Component {
 }
 
 CheckList.propTypes = {
-  cardId: PropTypes.number,
+  cardId: PropTypes.string,
   tasks: PropTypes.arrayOf(PropTypes.object),
   taskCallbacks: PropTypes.object
 };
