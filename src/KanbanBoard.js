@@ -13,7 +13,7 @@ class KanbanBoard extends Component {
 
     return (
       <div className="kanban-board">
-        <Link to='/new' className="float-button">+</Link>
+        <Link to='/react-kanban-board/dist/new' className="float-button">+</Link>
 
         <List 
           id='todo' 

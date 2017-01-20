@@ -9,8 +9,8 @@ import NewCard from './NewCard';
 render((
   <Router history={browserHistory}>
     <Route component={KanbanBoardContainer}>
-      <Route path="/" component={KanbanBoard}>
-        <Route path="new" component={NewCard} />
+      <Route path="/react-kanban-board/dist/" component={KanbanBoard}>
+        <Route path="/react-kanban-board/dist/new" component={NewCard} />
         <Route path="edit/:card_id" component={EditCard} />
       </Route>
     </Route>
