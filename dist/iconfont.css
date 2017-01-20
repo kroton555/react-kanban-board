@@ -1,0 +1,42 @@
+@font-face {
+  font-family: 'iconfont';
+  src:
+    url('fonts/iconfont.ttf?og9yyq') format('truetype'),
+    url('fonts/iconfont.woff?og9yyq') format('woff'),
+    url('fonts/iconfont.svg?og9yyq#iconfont') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.icon {
+  font-family: 'iconfont' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-close:before {
+  content: "\f00d";
+}
+.icon-pencil:before {
+  content: "\f040";
+}
+.icon-check-square:before {
+  content: "\f046";
+}
+.icon-square:before {
+  content: "\f096";
+}
+.icon-caret-down:before {
+  content: "\f0d7";
+}
+.icon-caret-right:before {
+  content: "\f0da";
+}
+

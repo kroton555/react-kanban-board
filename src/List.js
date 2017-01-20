@@ -34,7 +34,7 @@ class List extends Component {
 
     return connectDropTarget(
       <div className="list">
-        <h1>{this.props.title}</h1>
+        <h1 className="list__title">{this.props.title}</h1>
         {cards}
       </div>
     );

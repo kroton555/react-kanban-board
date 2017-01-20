@@ -12,8 +12,8 @@ class KanbanBoard extends Component {
       });
 
     return (
-      <div className="app">
-        <Link to='/new' className="float-button">+</Link>
+      <div className="kanban-board">
+        <Link to='new' className="float-button">+</Link>
 
         <List 
           id='todo' 

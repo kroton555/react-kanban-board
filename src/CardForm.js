@@ -14,7 +14,7 @@ class CardForm extends Component {
   render() {
     return (
       <div>
-        <div className="card big">
+        <div className="popup-card">
           <form onSubmit={this.props.handleSubmit.bind(this)}>
             <input 
               type='text'
