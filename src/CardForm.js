@@ -1,13 +1,24 @@
 import React, {Component, PropTypes} from 'react';
  
 class CardForm extends Component {
- 
+  
+  keydownHandle(e) {if (e.keyCode === 27) this.handleClose();}
+
+  componentDidMount() {
+    this.keydownHandle = this.keydownHandle.bind(this);
+    document.addEventListener('keydown', this.keydownHandle); 
+  }
+
+  componentWillUnmount() {
+    document.removeEventListener('keydown', this.keydownHandle);
+  }
+
   handleChange(field, e) {
     this.props.handleChange(field, e.target.value);
   }
   
   handleClose(e) {
-    e.preventDefault();
+    e && e.preventDefault();
     this.props.handleClose();
   }
   
@@ -15,6 +26,11 @@ class CardForm extends Component {
     return (
       <div>
         <div className="popup-card">
+          <i 
+            className="popup-card__close icon icon-close"
+            onClick={this.handleClose.bind(this)}
+          />
+          <h1 className="popup-card__title">{this.props.popupTitle}</h1>
           <form onSubmit={this.props.handleSubmit.bind(this)}>
             <input 
               type='text'
@@ -29,6 +45,7 @@ class CardForm extends Component {
               value={this.props.draftCard.description}
               onChange={this.handleChange.bind(this,'description')}
               placeholder="Description"
+              rows='3'
               required={true}
             />
 

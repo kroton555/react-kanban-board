@@ -159,14 +159,30 @@ body {
     left: 0; 
     right: 0;
     width: 450px;
-    max-height: 70%;
-    min-height: 230px;
+    min-height: 305px;
     padding: 15px;
     margin: 0 auto;
     border: 1px solid #e5e5df;
     border-radius: 3px;
     box-shadow: 0 1px 0 rgba(0, 0, 0, 0.25);
     background: #fff;   
+}
+.popup-card__close {
+    position: absolute;
+    right: 15px;
+    top: 15px;
+    font-size: 24px;
+    color: #888;
+    cursor: pointer;
+}
+.popup-card__close:hover {
+    transform: scale(1.1);
+}
+.popup-card__title {
+    margin-top: 0;
+    font-weight: normal;
+    color: #3b414c;
+    font-size: 24px;
 }
 .popup-card input[type=text], 
 .popup-card textarea {

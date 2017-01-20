@@ -26,6 +26,7 @@ class EditCard extends Component {
   render() {
     return (
       <CardForm draftCard={this.state}
+        popupTitle="Edit Card"
         buttonLabel="Edit Card"
         handleChange={this.handleChange.bind(this)}
         handleSubmit={this.handleSubmit.bind(this)}
