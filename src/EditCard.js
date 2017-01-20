@@ -1,5 +1,6 @@
 import React, {Component, PropTypes} from 'react';
 import CardForm from './CardForm';
+import constants from './constants';
  
 class EditCard extends Component {
   componentWillMount() {
@@ -15,11 +16,11 @@ class EditCard extends Component {
   handleSubmit(e) {
     e.preventDefault();
     this.props.cardCallbacks.updateCard(this.state);
-    this.props.router.push('/');
+    this.props.router.push(constants.SITE_ROOT);
   }
 
   handleClose(e) {
-    this.props.router.push('/');
+    this.props.router.push(constants.SITE_ROOT);
   }
 
   render() {

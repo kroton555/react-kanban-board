@@ -3,6 +3,7 @@ import { DragDropContext } from 'react-dnd';
 import HTML5Backend from 'react-dnd-html5-backend';
 import { Link } from 'react-router';
 import List from './List';
+import constants from './constants';
 
 class KanbanBoard extends Component {
   render() {
@@ -13,7 +14,7 @@ class KanbanBoard extends Component {
 
     return (
       <div className="kanban-board">
-        <Link to='/react-kanban-board/dist/new' className="float-button">+</Link>
+        <Link to={constants.SITE_ROOT + "new"} className="float-button">+</Link>
 
         <List 
           id='todo' 

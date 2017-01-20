@@ -80,7 +80,7 @@ class Card extends Component {
       <div className="card">
         <div className="card__side-color" style={sideColor}/>
         <div className="card__icon card__icon--edit">
-          <Link className="icon icon-pencil" to={'edit/'+this.props.id}></Link>
+          <Link className="icon icon-pencil" to={constants.SITE_ROOT + 'edit/'+this.props.id}></Link>
         </div>
         <div className="card__icon card__icon--remove icon icon-close"></div>
         <div

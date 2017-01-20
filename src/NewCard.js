@@ -1,5 +1,6 @@
 import React, {Component, PropTypes} from 'react';
-import CardForm from './CardForm'
+import CardForm from './CardForm';
+import constants from './constants';
  
 class NewCard extends Component {
   componentWillMount() {
@@ -20,11 +21,11 @@ class NewCard extends Component {
   handleSubmit(e) {
     e.preventDefault();
     this.props.cardCallbacks.addCard(this.state);
-    this.props.router.push('/');
+    this.props.router.push(constants.SITE_ROOT);
   }
 
   handleClose(e) {
-    this.props.router.push('/');
+    this.props.router.push(constants.SITE_ROOT);
   }
 
   render() {

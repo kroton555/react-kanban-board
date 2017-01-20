@@ -5,13 +5,14 @@ import KanbanBoardContainer from './KanbanBoardContainer';
 import KanbanBoard from './KanbanBoard';
 import EditCard from './EditCard';
 import NewCard from './NewCard';
+import constants from './constants';
  
 render((
   <Router history={browserHistory}>
     <Route component={KanbanBoardContainer}>
-      <Route path="/react-kanban-board/dist/" component={KanbanBoard}>
-        <Route path="/react-kanban-board/dist/new" component={NewCard} />
-        <Route path="edit/:card_id" component={EditCard} />
+      <Route path={constants.SITE_ROOT} component={KanbanBoard}>
+        <Route path={constants.SITE_ROOT + "new"} component={NewCard} />
+        <Route path={constants.SITE_ROOT + "edit/:card_id"} component={EditCard} />
       </Route>
     </Route>
   </Router>
