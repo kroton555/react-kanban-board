@@ -60,6 +60,10 @@ class Card extends Component {
     this.setState({showDetails: !this.state.showDetails});
   }
 
+  removeCard() {
+    this.props.cardCallbacks.removeCard(this.props.id);
+  }
+
   render() {
     const { connectDragSource, connectDropTarget } = this.props;
 
@@ -82,7 +86,10 @@ class Card extends Component {
         <div className="card__icon card__icon--edit">
           <Link className="icon icon-pencil" to={constants.SITE_ROOT + 'edit/'+this.props.id}></Link>
         </div>
-        <div className="card__icon card__icon--remove icon icon-close"></div>
+        <div 
+          className="card__icon card__icon--remove icon icon-close"
+          onClick={this.removeCard.bind(this)}
+        />
         <div
           className={"card__title" + (showDetails ? " card__title--is-open" : "")}
           onClick={this.toggleDetails.bind(this)}
@@ -104,6 +111,7 @@ Card.propTypes = {
   color: PropTypes.string,
   tasks: PropTypes.arrayOf(PropTypes.object),
   taskCallbacks: PropTypes.object,
+  cardCallbacks: PropTypes.object,
   connectDragSource: PropTypes.func.isRequired,
   connectDropTarget: PropTypes.func.isRequired
 };

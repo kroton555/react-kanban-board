@@ -26,19 +26,7 @@ class DatabaseController {
   getDataFromServer(callback) {
     if (this.userID) {
       this.userRef = this.database.ref(this.userID);
-      this.userRef.once(
-        'value',
-        (data) => {
-          var cards = data.val();
-          cards.forEach(
-            (card) => (card.tasks ? '' : card.tasks = [])
-          );
-          callback(cards || []);
-        },
-        (error) => {
-          console.error("database.getDataFromServer() " + error);
-        }
-      );
+      this.loadDataFromServer(callback);
     }
     else {
       this.addNewUser(
@@ -46,10 +34,26 @@ class DatabaseController {
           this.userID = key;
           this.userRef = this.database.ref(key);
           localStorage.setItem('userID', key);
-          callback(defaultData);
+          this.loadDataFromServer(callback);
         }
       );
     }    
+  }
+
+  loadDataFromServer(callback) {
+    this.userRef.once(
+      'value',
+      (data) => {
+        var cards = data.val();
+        cards.forEach(
+          (card) => (card.tasks ? '' : card.tasks = [])
+          );
+        callback(cards || []);
+      },
+      (error) => {
+        console.error("database.getDataFromServer() " + error);
+      }
+    );
   }
 
   addNewUser(callback) {

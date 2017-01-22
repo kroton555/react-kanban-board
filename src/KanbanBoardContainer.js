@@ -162,14 +162,30 @@ class KanbanBoardContainer extends Component {
   updateCard(card) {
     let prevState = this.state;
     let cardIndex = this.state.cards.findIndex((c)=>c.id === card.id);
-    let nextState = update(
+    let nextCardsState = update(
         this.state.cards, {
             [cardIndex]: {$set: card}
         });
     this.database.setCard(card, cardIndex,
       () => this.setState(prevState)
     );
-    this.setState({cards: nextState});
+    this.setState({cards: nextCardsState});
+  }
+
+  removeCard(cardId) {
+    let prevState = this.state;
+    let cardIndex = this.state.cards.findIndex((c)=>c.id === cardId);  
+    let nextState = update(
+      this.state, {
+        cards: {
+          $splice: [[cardIndex, 1],]
+        }
+      }
+    );
+    this.database.saveAllCards(nextState.cards,
+      () => this.setState(prevState)
+    );
+    this.setState(nextState);
   }
 
   render() {
@@ -183,6 +199,7 @@ class KanbanBoardContainer extends Component {
       cardCallbacks:{
         addCard: this.addCard.bind(this),
         updateCard: this.updateCard.bind(this),
+        removeCard: this.removeCard.bind(this),
         updateStatus: this.updateCardStatus.bind(this),
         updatePosition: this.updateCardPosition.bind(this),
         persistCardDrag: this.persistCardDrag.bind(this)
