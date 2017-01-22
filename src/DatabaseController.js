@@ -44,11 +44,11 @@ class DatabaseController {
     this.userRef.once(
       'value',
       (data) => {
-        var cards = data.val();
+        var cards = data.val() || [];
         cards.forEach(
           (card) => (card.tasks ? '' : card.tasks = [])
           );
-        callback(cards || []);
+        callback(cards);
       },
       (error) => {
         console.error("database.getDataFromServer() " + error);
@@ -121,6 +121,8 @@ class DatabaseController {
   }
 
   saveAllCards(cards, failCallback) {
+    if (!cards.length)
+      cards = false;
     this.userRef.set(cards, function(error) {
       if (error) {
         console.log('Synchronization failed ' + error);
