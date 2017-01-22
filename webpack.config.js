@@ -1,10 +1,7 @@
 var webpack = require('webpack');
 
-/*
- * Default webpack configuration for development
- */
 var config = {
-  devtool: 'eval-source-map',
+  devtool: 'cheap-inline-module-source-map',
   entry:  __dirname + "/src/App.js",
   output: {
     path: __dirname + '/dist',
@@ -28,14 +25,22 @@ var config = {
   },
 }
 
-/*
- * If bundling for production, optimize output
- */
 if (false/*process.env.NODE_ENV === 'production'*/) {
   config.devtool = false;
   config.plugins = [
+    new webpack.optimize.DedupePlugin(),
     new webpack.optimize.OccurenceOrderPlugin(),
-    new webpack.optimize.UglifyJsPlugin({comments: false}),
+    new webpack.optimize.UglifyJsPlugin({
+      compress: {
+        warnings: false,
+        drop_console: true,
+        unsafe: true
+      },
+      mangle: true,
+      sourcemap: false,
+      beautify: false,
+      dead_code: true
+    }),
     new webpack.DefinePlugin({
       'process.env': {NODE_ENV: JSON.stringify('production')}
     })
