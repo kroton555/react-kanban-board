@@ -31,8 +31,8 @@ class NewCard extends Component {
   render() {
     return (
       <CardForm draftCard={this.state}
-        popupTitle="Create Card"
-        buttonLabel="Create Card"
+        popupTitle="Добавить карточку"
+        buttonLabel="Добавить"
         handleChange={this.handleChange.bind(this)}
         handleSubmit={this.handleSubmit.bind(this)}
         handleClose={this.handleClose.bind(this)}

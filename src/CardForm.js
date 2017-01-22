@@ -36,7 +36,7 @@ class CardForm extends Component {
               type='text'
               value={this.props.draftCard.title}
               onChange={this.handleChange.bind(this,'title')}
-              placeholder="Title"
+              placeholder="Название"
               required={true}
               autoFocus={true}
             />
@@ -44,25 +44,25 @@ class CardForm extends Component {
             <textarea 
               value={this.props.draftCard.description}
               onChange={this.handleChange.bind(this,'description')}
-              placeholder="Description"
+              placeholder="Описание"
               rows='3'
               required={true}
             />
 
             <label>
-              <span>Status</span>
+              <span>Статус</span>
               <select 
                 value={this.props.draftCard.status}
                 onChange={this.handleChange.bind(this,'status')}
               >
-                <option value="todo">To Do</option>
-                <option value="in-progress">In Progress</option>
-                <option value="done">Done</option>
+                <option value="todo">Запланировано</option>
+                <option value="in-progress">В процессе</option>
+                <option value="done">Выполнено</option>
               </select>
             </label>
             <br />
             <label>
-              <span>Color</span>
+              <span>Цвет</span>
               <input
                 type="color" 
                 defaultValue={this.props.draftCard.color}

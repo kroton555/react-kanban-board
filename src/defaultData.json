@@ -1,27 +1,52 @@
 {
-  "defaultData" : [  
-  {
-    "color" : "#64693d",
-    "description" : "Code along with the samples in the book. The complete source can be found at [github](https://github.com/pro-react)",
-    "id" : "2",
+  "defaultData" : [ {
+    "color" : "#ff8000",
+    "description" : "Нажмите на кнопку в правом нижнем углу, чтоб открыть форму для создания новой карточки задачи",
+    "id" : "-Kb5GdjH2gYDoCJwGqjF",
+    "status" : "in-progress",
+    "title" : "Добавление карточек"
+  }, {
+    "color" : "#c9c9c9",
+    "description" : "Можно перетаскивать карточки задач с помощью мышки из одного списка в другой",
+    "id" : "-Kb5H3kmEJ1EO3gO9U4x",
+    "status" : "in-progress",
+    "title" : "Перемещение карточек"
+  }, {
+    "color" : "#008000",
+    "description" : "Нажмите на иконку \"карандаш\", расположенную в заголовке карточки, чтоб открыть форму для редактирования.",
+    "id" : "-Kb5HaP_apZagErC2_Ye",
+    "status" : "in-progress",
+    "title" : "Редактирование"
+  }, {
+    "color" : "#008080",
+    "description" : "Нажмите на иконку \"крест\" для удаления карточки задачи.",
+    "id" : "-Kb5HohEV11r3eT2dqhz",
+    "status" : "in-progress",
+    "title" : "Удаление"
+  }, {
+    "color" : "#804040",
+    "description" : "Внизу развернутой карточки расположено поле ввода. Впишите название подзадачи и нажмите \"Enter\".",
+    "id" : "-Kb5IFxy_cwYgDfeHbWj",
     "status" : "in-progress",
     "tasks" : [ {
       "done" : false,
-      "id" : "21",
-      "name" : "aaa"
-    } ],
-    "title" : "Write some code"
-  }, 
-  {
-    "color" : "#BD8D31",
-    "description" : "I should read the **whole** book",
-    "id" : "1",
-    "status" : "in-progress",
-    "tasks" : [ {
+      "id" : "-Kb5INr9uPgt1l72C59m",
+      "name" : "Подзадача №1"
+    }, {
+      "done" : true,
+      "id" : "-Kb5IUi3XkAdgJ6NcZJ3",
+      "name" : "Подзадача №2"
+    }, {
       "done" : false,
-      "id" : "11",
-      "name" : "aaa"
+      "id" : "-Kb5JRT6V6ml6k96mKcu",
+      "name" : "Подзадача №3"
     } ],
-    "title" : "Read the Book"
-  }]
+    "title" : "Добавление подзадач"
+  }, {
+    "color" : "#808040",
+    "description" : "Ваши данные сохраняются автоматически в кеше браузера и не будут утрачены после закрытия вкладки или браузера.",
+    "id" : "-Kb5J79CkyZItUZo8wc0",
+    "status" : "in-progress",
+    "title" : "Сохранение"
+  } ]
 }

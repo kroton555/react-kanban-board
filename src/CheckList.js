@@ -32,7 +32,7 @@ class CheckList extends Component {
         <ul>{tasks}</ul>
         <input type="text"
           className="checklist__add-task"
-          placeholder="Type then hit Enter to add a task" 
+          placeholder="Впишите подзадачу и нажмите Enter" 
           onKeyPress={this.checkInputKeyPress.bind(this)}
         />
       </div>

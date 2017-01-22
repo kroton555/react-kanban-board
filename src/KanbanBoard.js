@@ -18,21 +18,21 @@ class KanbanBoard extends Component {
 
         <List 
           id='todo' 
-          title="To Do" 
+          title="Запланировано" 
           taskCallbacks={this.props.taskCallbacks}
           cardCallbacks={this.props.cardCallbacks}
           cards={this.props.cards.filter((card) => card.status === "todo")}
         />
         <List 
           id='in-progress' 
-          title="In Progress"
+          title="В процессе"
           taskCallbacks={this.props.taskCallbacks}
           cardCallbacks={this.props.cardCallbacks} 
           cards={this.props.cards.filter((card) => card.status === "in-progress")}
         />
         <List 
           id='done' 
-          title='Done'
+          title='Выполнено'
           taskCallbacks={this.props.taskCallbacks}
           cardCallbacks={this.props.cardCallbacks} 
           cards={this.props.cards.filter((card) => card.status === "done")}

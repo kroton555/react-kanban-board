@@ -37,7 +37,7 @@ class List extends Component {
         <h1 className="list__title">{this.props.title}</h1>
         {cards.length ? 
           cards : 
-          <div className="card card--placeholder">No cards</div>
+          <div className="card card--placeholder">Нет задач</div>
         }
       </div>
     );
