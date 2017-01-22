@@ -18,11 +18,18 @@ class KanbanBoardContainer extends Component {
 
   componentDidMount() {
     this.database = new DatabaseController();
-    this.database.getData(
+    var localData = this.database.getDataFromLocalStorage();
+    this.setState({cards: localData});
+    this.database.connect();
+    this.database.getDataFromServer(
       (data) => {
         this.setState({cards: data}); 
       }
     );
+
+    window.onbeforeunload = () => {
+      this.database.saveDataToLocalStorage(this.state.cards);
+    };
   }
 
   addTask(cardId, taskName) {

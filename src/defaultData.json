@@ -1,0 +1,27 @@
+{
+  "defaultData" : [  
+  {
+    "color" : "#64693d",
+    "description" : "Code along with the samples in the book. The complete source can be found at [github](https://github.com/pro-react)",
+    "id" : "2",
+    "status" : "in-progress",
+    "tasks" : [ {
+      "done" : false,
+      "id" : "21",
+      "name" : "aaa"
+    } ],
+    "title" : "Write some code"
+  }, 
+  {
+    "color" : "#BD8D31",
+    "description" : "I should read the **whole** book",
+    "id" : "1",
+    "status" : "in-progress",
+    "tasks" : [ {
+      "done" : false,
+      "id" : "11",
+      "name" : "aaa"
+    } ],
+    "title" : "Read the Book"
+  }]
+}
