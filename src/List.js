@@ -35,7 +35,10 @@ class List extends Component {
     return connectDropTarget(
       <div className="list">
         <h1 className="list__title">{this.props.title}</h1>
-        {cards}
+        {cards.length ? 
+          cards : 
+          <div className="card card--placeholder">No cards</div>
+        }
       </div>
     );
   }
