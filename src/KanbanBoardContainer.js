@@ -3,7 +3,8 @@ import KanbanBoard from './KanbanBoard';
 import DatabaseController from './DatabaseController';
 import update from 'react-addons-update';
 import 'whatwg-fetch';
-import 'babel-polyfill';
+//import 'babel-polyfill';
+import 'array-find-index';
 //import {throttle} from './utils';
 
 class KanbanBoardContainer extends Component {
