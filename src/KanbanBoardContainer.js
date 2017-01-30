@@ -3,9 +3,7 @@ import KanbanBoard from './KanbanBoard';
 import DatabaseController from './DatabaseController';
 import update from 'react-addons-update';
 import 'whatwg-fetch';
-//import 'babel-polyfill';
 import 'array-find-index';
-//import {throttle} from './utils';
 
 class KanbanBoardContainer extends Component {
   constructor() {
@@ -13,8 +11,8 @@ class KanbanBoardContainer extends Component {
     this.state = {
       cards: []
     };
-    this.updateCardStatus = this.updateCardStatus.bind(this);//throttle(this.updateCardStatus.bind(this));
-    this.updateCardPosition = this.updateCardPosition.bind(this);//throttle(this.updateCardPosition.bind(this),500);
+    //throttle(this.updateCardStatus.bind(this));
+    //throttle(this.updateCardPosition.bind(this),500);
   }
 
   componentDidMount() {
@@ -94,42 +92,61 @@ class KanbanBoardContainer extends Component {
     this.setState({cards: nextCardsState});
   }
 
-  updateCardStatus(cardId, listId) {
-    // Find the index of the card
-    let cardIndex = this.state.cards.findIndex((card)=>card.id == cardId);
-    // Get the current card
-    let card = this.state.cards[cardIndex];
-    // Only proceed if hovering over a different list
-    if (card.status !== listId) {
-      // set the component state to the mutated object
-      this.setState(update(this.state, {
-        cards: {
-          [cardIndex]: {
-            status: {$set: listId}
-          }
-        }
-      }));
-    }
+  getIndexByCardId(cardId) {
+    const { cards } = this.state;
+    for (let i = 0; i < cards.length; ++i)
+      if (cards[i].id === cardId)
+        return i;
+
+    return -1;
   }
- 
-  updateCardPosition(cardId, afterId) {
-    if (cardId !== afterId) {
-      // Find the index of the card
-      let cardIndex = this.state.cards.findIndex((card)=>card.id == cardId);
-      // Get the current card
-      let card = this.state.cards[cardIndex];
-      // Find the index of the card the user is hovering over
-      let afterIndex = this.state.cards.findIndex((card)=>card.id == afterId);
-      // Use splice to remove the card and reinsert it a the new index
-      this.setState(update(this.state, {
-        cards: {
-          $splice: [
-            [cardIndex, 1],
-            [afterIndex, 0, card]
-          ]
-        }
-      }));
+
+  moveCard(dragCardId, hoverCardId, newStatus, insertAfter) {
+    const { cards } = this.state;
+    const dragIndex = this.getIndexByCardId(dragCardId);
+    let hoverIndex = this.getIndexByCardId(hoverCardId);
+    let dragCard = cards[dragIndex];
+
+    if (newStatus) {
+      dragCard = update(cards[dragIndex], {
+        status: {$set: newStatus}
+      });
+
+      if (hoverIndex > dragIndex) {
+        if (!insertAfter)
+          hoverIndex--;
+      }
+      else {
+        if (insertAfter)
+          hoverIndex++;
+      }
     }
+
+    this.setState(update(this.state, {
+      cards: {
+        $splice: [
+          [dragIndex, 1],
+          [hoverIndex, 0, dragCard]
+        ]
+      }
+    }));  
+  }
+
+  moveCardInList(dragCardId, newStatus) {
+    const { cards } = this.state;
+    const dragIndex = this.getIndexByCardId(dragCardId);
+    let dragCard = update(cards[dragIndex], {
+      status: {$set: newStatus}
+    });
+
+    this.setState(update(this.state, {
+      cards: {
+        $splice: [
+          [dragIndex, 1],
+          [cards.length, 0, dragCard]
+        ]
+      }
+    }));  
   }
 
   persistCardDrag (cardId, status) {
@@ -197,14 +214,14 @@ class KanbanBoardContainer extends Component {
         delete: this.deleteTask.bind(this),
         add: this.addTask.bind(this)
       },
-      cardCallbacks:{
+      cardCallbacks:{       
         addCard: this.addCard.bind(this),
         updateCard: this.updateCard.bind(this),
         removeCard: this.removeCard.bind(this),
-        updateStatus: this.updateCardStatus.bind(this),
-        updatePosition: this.updateCardPosition.bind(this),
+        moveCard: this.moveCard.bind(this),
         persistCardDrag: this.persistCardDrag.bind(this)
-      }
+      },
+      moveCardInList: this.moveCardInList.bind(this)
     });
     return kanbanBoard;
   }

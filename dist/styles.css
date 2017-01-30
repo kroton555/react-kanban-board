@@ -13,63 +13,88 @@ html, body, #root {
     padding: 0;
 }
 body {
-    background: #eee;
+    background: #fff;
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 .kanban-board {
-    white-space: nowrap;
     height: 100%;
 }
 
-.list {
-    position: relative;
-    display: inline-block;
-    vertical-align: top;
-    white-space: normal;
-    height: 100%;
-    width: 33%;
-    padding: 0 20px;
+.list-wrapper {
+    display: flex;
+    justify-content: space-around;
+    min-height: 100%;
 }
-.list:not(:last-child):after {
-    content: "";
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 1px;
-    height: 99%;
-    background: linear-gradient(to bottom, #eee 0%, #ccc 50%, #eee 100%) fixed;
+
+.list {
+    width: 32%;
+    display: flex;
+    flex-direction: column;
+    position: relative; 
+    padding-bottom: 20px;    
 }
 .list__title {
+    margin: 12px;
     font-weight: 200;
     color: #3b414c;
     font-size: 28px;
 }
+.list__content {
+    flex-grow: 2;
+    position: relative;
+    box-sizing: border-box;    
+    padding: 5px 0 7px 0;
+    background-color: #e8e8e8;
+    border-radius: 3px;
+    box-shadow: 0 0 0 1px #ccc, 1px 1px 3px #ddd;
+}
+.list__content--dragging {
+    background-color: #c5e5c5;
+}
 
+.card__wrapper {
+    box-sizing: border-box;
+    position: relative;
+    width: 100%;
+    padding: 5px 10px;
+}
 .card {
+    box-sizing: border-box;
     position: relative;
     z-index: 1;   
     width: 100%;
-    padding: 10px 10px 10px 15px;
-    margin: 0 0 10px 0;
-    border: 1px solid #e5e5df;
+    border: 1px solid #999;
     border-radius: 3px;
-    box-shadow: 0 1px 0 rgba(0, 0, 0, 0.25);
     background: #fff;
 }
+.card--dragging {
+    box-shadow: none;
+    border: 1px dashed #555;
+}
 .card--placeholder {
+    padding: 10px;
     color: #a7a7a7;
-    background: #f5f5f5;
+    background-color: rgba(255, 255, 255, 0.5);
     box-shadow: none;
     border: none;   
 }
-.card__side-color {
-    position: absolute;
-    z-index: -1;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    width: 7px;
+.card__header {
+    position: relative;
+    padding: 10px 10px 10px 10px;
+    border-radius: 3px;
+}
+.card__details {
+    box-sizing: border-box;
+    padding: 10px 10px 10px 10px;
+    border-radius: 0 0 3px 3px;
+    background-color: #fff;
+}
+.card__descr {
+    margin-bottom: 10px;
+}
+.card__descr p {
+    margin: 0;
 }
 .card__title {
     position: relative;
@@ -78,9 +103,6 @@ body {
     padding-left: 15px;
     font-weight: bold;
     cursor: pointer;
-}
-.card__title:hover {
-    background-color: #f3f3f3;
 }
 .card__title .icon {
     position: absolute;
@@ -93,7 +115,7 @@ body {
     opacity: 0;
     transition: opacity .2s ease-in;
     cursor: pointer;
-    color: #888;
+    color: #333;
 }
 .card:hover .card__icon{
     opacity: 1;
@@ -103,7 +125,7 @@ body {
 }
 .card__icon--edit a{
     text-decoration: none;
-    color: #888;
+    color: #333;
     font-size: 95%;
 }
 .card__icon--remove {
@@ -230,7 +252,7 @@ body {
 }
 
 .float-button {
-    position: absolute;
+    position: fixed;
     height: 56px;
     width: 56px;
     z-index: 2;

@@ -16,27 +16,32 @@ class KanbanBoard extends Component {
       <div className="kanban-board">
         <Link to={constants.SITE_ROOT + "new"} className="float-button">+</Link>
 
-        <List 
-          id='todo' 
-          title="Запланировано" 
-          taskCallbacks={this.props.taskCallbacks}
-          cardCallbacks={this.props.cardCallbacks}
-          cards={this.props.cards.filter((card) => card.status === "todo")}
-        />
-        <List 
-          id='in-progress' 
-          title="В процессе"
-          taskCallbacks={this.props.taskCallbacks}
-          cardCallbacks={this.props.cardCallbacks} 
-          cards={this.props.cards.filter((card) => card.status === "in-progress")}
-        />
-        <List 
-          id='done' 
-          title='Выполнено'
-          taskCallbacks={this.props.taskCallbacks}
-          cardCallbacks={this.props.cardCallbacks} 
-          cards={this.props.cards.filter((card) => card.status === "done")}
-        />
+        <div className="list-wrapper">
+          <List 
+            id='todo' 
+            title="Запланировано" 
+            taskCallbacks={this.props.taskCallbacks}
+            cardCallbacks={this.props.cardCallbacks}
+            moveCardInList={this.props.moveCardInList}
+            cards={this.props.cards.filter((card) => card.status === "todo")}
+          />
+          <List 
+            id='in-progress' 
+            title="В процессе"
+            taskCallbacks={this.props.taskCallbacks}
+            cardCallbacks={this.props.cardCallbacks}
+            moveCardInList={this.props.moveCardInList}
+            cards={this.props.cards.filter((card) => card.status === "in-progress")}
+          />
+          <List 
+            id='done' 
+            title='Выполнено'
+            taskCallbacks={this.props.taskCallbacks}
+            cardCallbacks={this.props.cardCallbacks}
+            moveCardInList={this.props.moveCardInList}
+            cards={this.props.cards.filter((card) => card.status === "done")}
+          />
+        </div>
 
         {cardModal}
       </div>
@@ -47,7 +52,8 @@ class KanbanBoard extends Component {
 KanbanBoard.propTypes = {
   cards: PropTypes.arrayOf(PropTypes.object),
   taskCallbacks: PropTypes.object,
-  cardCallbacks: PropTypes.object    
+  cardCallbacks: PropTypes.object,
+  moveCardInList: PropTypes.func.isRequired    
 };
 
 export default DragDropContext(HTML5Backend)(KanbanBoard);
