@@ -5,7 +5,11 @@ import marked from 'marked';
 import { DragSource, DropTarget } from 'react-dnd';
 import constants from './constants';
 import {Link} from 'react-router';
+//import { getEmptyImage } from 'react-dnd-html5-backend';
+//import {layerBeginDragging, layerEndDragging} from './cardDragLayer';
  
+let anyCardDragging = false;
+
 let titlePropType = (props, propName, componentName) => {
   if (props[propName]) {
     let value = props[propName];
@@ -20,6 +24,10 @@ let titlePropType = (props, propName, componentName) => {
 const cardDragSpec = {
   beginDrag(props, monitor, component) {
     component.hideDetails();
+    //const boundingRect = findDOMNode(component).getBoundingClientRect();
+    //layerBeginDragging(boundingRect, props.title, props.color);        
+    anyCardDragging = true;
+    
     return {
       id: props.id,
       index: props.index,
@@ -31,7 +39,9 @@ const cardDragSpec = {
     return props.id === monitor.getItem().id;
   },
 
-  endDrag(props) {
+  endDrag(props) {    
+    //layerEndDragging();
+    anyCardDragging = false;
     props.cardCallbacks.persistCardDrag(props.id, props.status);
   }
 };
@@ -93,6 +103,12 @@ class Card extends Component {
     };
   }
 
+  //componentDidMount() {
+  //  this.props.connectDragPreview(getEmptyImage(), {
+  //   captureDraggingState: true,
+  //  });
+  //}
+
   hideDetails() {
     if (this.state.showDetails) {
       this.setState({showDetails: false});
@@ -105,6 +121,17 @@ class Card extends Component {
 
   removeCard() {
     this.props.cardCallbacks.removeCard(this.props.id);
+  }
+
+  shouldComponentUpdate(nextProps, nextState) {
+    if (anyCardDragging &&
+        this.props.status === nextProps.status &&
+        this.props.index === nextProps.index &&
+        this.state.showDetails === nextState.showDetails) 
+    {
+      return false;
+    }
+    return true;
   }
 
   render() {
@@ -129,7 +156,7 @@ class Card extends Component {
     let cardClass = "card" + (isDragging ? " card--dragging" : "");
     let cardTitleClass = "card__title" + (showDetails ? " card__title--is-open" : "");
 
-    return connectDropTarget(connectDragPreview(
+    return connectDropTarget(
       <div className="card__wrapper">
         <div className={cardClass}>
 
@@ -157,7 +184,7 @@ class Card extends Component {
           {cardDetails}
         </div>
       </div>
-    ))
+    )
   }
 }
  

@@ -214,7 +214,7 @@ class KanbanBoardContainer extends Component {
         delete: this.deleteTask.bind(this),
         add: this.addTask.bind(this)
       },
-      cardCallbacks:{       
+      cardCallbacks:{
         addCard: this.addCard.bind(this),
         updateCard: this.updateCard.bind(this),
         removeCard: this.removeCard.bind(this),
