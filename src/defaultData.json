@@ -1,52 +1,129 @@
 {
-  "defaultData" : [ {
-    "color" : "#ff8000",
-    "description" : "Нажмите на кнопку в правом нижнем углу, чтоб открыть форму для создания новой карточки задачи",
-    "id" : "-Kb5GdjH2gYDoCJwGqjF",
-    "status" : "in-progress",
-    "title" : "Добавление карточек"
-  }, {
-    "color" : "#c9c9c9",
-    "description" : "Можно перетаскивать карточки задач с помощью мышки из одного списка в другой",
-    "id" : "-Kb5H3kmEJ1EO3gO9U4x",
-    "status" : "in-progress",
-    "title" : "Перемещение карточек"
-  }, {
-    "color" : "#009B00",
-    "description" : "Нажмите на иконку \"карандаш\", расположенную в заголовке карточки, чтоб открыть форму для редактирования.",
-    "id" : "-Kb5HaP_apZagErC2_Ye",
-    "status" : "in-progress",
-    "title" : "Редактирование"
-  }, {
-    "color" : "#009F9F",
-    "description" : "Нажмите на иконку \"крест\" для удаления карточки задачи.",
-    "id" : "-Kb5HohEV11r3eT2dqhz",
-    "status" : "in-progress",
-    "title" : "Удаление"
-  }, {
-    "color" : "#FACD45",
-    "description" : "Внизу развернутой карточки расположено поле ввода. Впишите название подзадачи и нажмите \"Enter\".",
-    "id" : "-Kb5IFxy_cwYgDfeHbWj",
-    "status" : "in-progress",
-    "tasks" : [ {
-      "done" : false,
-      "id" : "-Kb5INr9uPgt1l72C59m",
-      "name" : "Подзадача №1"
-    }, {
-      "done" : true,
-      "id" : "-Kb5IUi3XkAdgJ6NcZJ3",
-      "name" : "Подзадача №2"
-    }, {
-      "done" : false,
-      "id" : "-Kb5JRT6V6ml6k96mKcu",
-      "name" : "Подзадача №3"
-    } ],
-    "title" : "Добавление подзадач"
-  }, {
-    "color" : "#A6A653",
-    "description" : "Ваши данные сохраняются автоматически в кеше браузера и не будут утрачены после закрытия вкладки или браузера.",
-    "id" : "-Kb5J79CkyZItUZo8wc0",
-    "status" : "in-progress",
-    "title" : "Сохранение"
-  } ]
+"defaultData" : {
+  "selectedBoard": "Инструкции",
+  "boards": {
+    "a0": {
+      "name": "Инструкции",
+      "cards": [
+        {
+          "color" : "#ff8000",
+          "description" : "Нажмите на кнопку в правом нижнем углу, чтоб открыть форму для создания новой карточки задачи",
+          "id" : "-Kb5GdjH2gYDoCJwGqjF",
+          "status" : "in-progress",
+          "title" : "Добавление карточек"
+        }, {
+          "color" : "#c9c9c9",
+          "description" : "Можно перетаскивать карточки задач с помощью мышки из одного списка в другой",
+          "id" : "-Kb5H3kmEJ1EO3gO9U4x",
+          "status" : "in-progress",
+          "title" : "Перемещение карточек"
+        }, {
+          "color" : "#009B00",
+          "description" : "Нажмите на иконку \"карандаш\", расположенную в заголовке карточки, чтоб открыть форму для редактирования.",
+          "id" : "-Kb5HaP_apZagErC2_Ye",
+          "status" : "in-progress",
+          "title" : "Редактирование"
+        }, {
+          "color" : "#009F9F",
+          "description" : "Нажмите на иконку \"крест\" для удаления карточки задачи.",
+          "id" : "-Kb5HohEV11r3eT2dqhz",
+          "status" : "in-progress",
+          "title" : "Удаление"
+        }, {
+          "color" : "#FACD45",
+          "description" : "Внизу развернутой карточки расположено поле ввода. Впишите название подзадачи и нажмите \"Enter\".",
+          "id" : "-Kb5IFxy_cwYgDfeHbWj",
+          "status" : "in-progress",
+          "tasks" : [ {
+            "done" : false,
+            "id" : "-Kb5INr9uPgt1l72C59m",
+            "name" : "Подзадача №1"
+          }, {
+            "done" : true,
+            "id" : "-Kb5IUi3XkAdgJ6NcZJ3",
+            "name" : "Подзадача №2"
+          }, {
+            "done" : false,
+            "id" : "-Kb5JRT6V6ml6k96mKcu",
+            "name" : "Подзадача №3"
+          } ],
+          "title" : "Добавление подзадач"
+        }, {
+          "color" : "#A6A653",
+          "description" : "Ваши данные сохраняются автоматически в кеше браузера и не будут утрачены после закрытия вкладки или браузера.",
+          "id" : "-Kb5J79CkyZItUZo8wc0",
+          "status" : "in-progress",
+          "title" : "Сохранение"
+        }
+      ]
+    },
+    "a1": {
+      "name": "Тест 1",
+      "cards": [
+        {
+          "color" : "#ff8000",
+          "description" : "Нажмите на кнопку в правом нижнем углу, чтоб открыть форму для создания новой карточки задачи",
+          "id" : "-Kb5GdjH2gYDoCJwGqjF",
+          "status" : "in-progress",
+          "title" : "Добавление карточек"
+        }, {
+          "color" : "#c9c9c9",
+          "description" : "Можно перетаскивать карточки задач с помощью мышки из одного списка в другой",
+          "id" : "-Kb5H3kmEJ1EO3gO9U4x",
+          "status" : "done",
+          "title" : "Перемещение карточек"
+        }, {
+          "color" : "#009B00",
+          "description" : "Нажмите на иконку \"карандаш\", расположенную в заголовке карточки, чтоб открыть форму для редактирования.",
+          "id" : "-Kb5HaP_apZagErC2_Ye",
+          "status" : "in-progress",
+          "title" : "Редактирование"
+        }, {
+          "color" : "#009F9F",
+          "description" : "Нажмите на иконку \"крест\" для удаления карточки задачи.",
+          "id" : "-Kb5HohEV11r3eT2dqhz",
+          "status" : "todo",
+          "title" : "Удаление"
+        }
+      ]
+    },
+    "a2": {
+      "name": "Тест 2",
+      "cards": [
+        {
+          "color" : "#009F9F",
+          "description" : "Нажмите на иконку \"крест\" для удаления карточки задачи.",
+          "id" : "-Kb5HohEV11r3eT2dqhz",
+          "status" : "in-progress",
+          "title" : "Удаление"
+        }, {
+          "color" : "#FACD45",
+          "description" : "Внизу развернутой карточки расположено поле ввода. Впишите название подзадачи и нажмите \"Enter\".",
+          "id" : "-Kb5IFxy_cwYgDfeHbWj",
+          "status" : "todo",
+          "tasks" : [ {
+            "done" : false,
+            "id" : "-Kb5INr9uPgt1l72C59m",
+            "name" : "Подзадача №1"
+          }, {
+            "done" : true,
+            "id" : "-Kb5IUi3XkAdgJ6NcZJ3",
+            "name" : "Подзадача №2"
+          }, {
+            "done" : false,
+            "id" : "-Kb5JRT6V6ml6k96mKcu",
+            "name" : "Подзадача №3"
+          } ],
+          "title" : "Добавление подзадач"
+        }, {
+          "color" : "#A6A653",
+          "description" : "Ваши данные сохраняются автоматически в кеше браузера и не будут утрачены после закрытия вкладки или браузера.",
+          "id" : "-Kb5J79CkyZItUZo8wc0",
+          "status" : "in-progress",
+          "title" : "Сохранение"
+        }
+      ]
+    }
+  }
+}
 }

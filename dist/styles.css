@@ -17,21 +17,44 @@ body {
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
+.container {
+    width: 100%;
+    max-width: 1200px;
+    min-width: 800px;
+    margin: 0 auto;
+}
+.container-with-paddings {
+    width: 100%;
+    max-width: 1200px;
+    min-width: 800px;
+    margin: 0 auto;
+    padding: 0 10px;
+}
+
 .kanban-board {
-    height: 100%;
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+}
+
+.header {
+    box-sizing: border-box;
+    padding: 20px 0;
+    background-color: #ccc;
 }
 
 .list-wrapper {
     display: flex;
-    justify-content: space-around;
-    min-height: 100%;
+    flex-grow: 2;
 }
 
 .list {
-    width: 32%;
+    position: relative;
     display: flex;
     flex-direction: column;
-    position: relative; 
+    width: 33.3331%;
+    padding-left: 10px;
+    padding-right: 10px;
     padding-bottom: 20px;    
 }
 .list__title {
@@ -263,22 +286,100 @@ body {
     padding: 8px;
 }
 
-.float-button {
-    position: fixed;
-    height: 56px;
-    width: 56px;
-    z-index: 2;
-    right: 20px;
-    bottom: 20px;
-    background: #D43A2F;
-    color: white;
-    border-radius: 100%;
-    font-size: 34px;
+.add-card-btn {
+    display: block; 
+    float: right;
+    padding: 7px 15px;      
+    font-size: 18px;
+    line-height: 22px;
     text-align: center;
     text-decoration: none;
-    line-height: 50px;
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
+    text-transform: uppercase;
+    color: white;
+    border: 1px solid #D43A2F;
+    background-color: #D43A2F;  
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    border-radius: 5px;
 }
+
+.custom-select {
+    position: relative;   
+    display: block;
+    float: right;
+    margin-right: 30px;
+    font-size: 18px;
+    line-height: 22px;
+    color: #3b414c;  
+}
+.custom-select__title,
+.custom-select__list {
+    box-sizing: border-box;
+    width: 300px;   
+    border: 1px solid #333; 
+    
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.custom-select__title {
+    position: relative;
+    padding: 7px 15px;
+    background-color: #eee;
+    cursor: pointer;         
+}
+.custom-select__icon-arrow {
+    position: absolute;
+    right: 12px;
+    top: 9px;
+}
+.custom-select__list {
+    position: absolute;
+    z-index: 10;
+    left: 0;
+    padding: 8px 0;
+    margin: 0;  
+    border-top: none; 
+    background-color: #fff;  
+    list-style-type: none;
+    cursor: default;
+}
+
+.custom-select__item {
+    position: relative;
+    padding: 0 65px 0 15px;
+    line-height: 24px;
+}
+.custom-select__item:hover {
+    background-color: #ddd;
+}
+.custom-select__item.active {
+    background-color: #aaa;
+}
+.custom-select__icon-remove {
+    position: absolute;
+    top: 3px;
+    right: 15px;    
+    opacity: 0;
+    cursor: pointer;
+    color: #444;
+}
+.custom-select__item:hover .custom-select__icon-remove{
+    opacity: 1;
+}
+.custom-select__item-add-board {
+    border-bottom: 1px solid #888;
+    padding: 0 15px 8px 15px;
+    margin-bottom: 5px;
+}
+.custom-select__item-add-board:hover {
+    background-color: transparent;
+}
+.custom-select__item-add-board input {
+    width: 100%;   
+    padding: 5px;
+    border: 1px dashed #bbb;
+}
+
 
 .drag-layer {
     position: fixed;
@@ -288,4 +389,10 @@ body {
     z-index: 100;
     width: 100%;
     height: 100%;
+}
+
+.clearfix::after {
+    content: '';
+    display: table;
+    clear: both;
 }

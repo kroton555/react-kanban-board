@@ -9,7 +9,9 @@ class KanbanBoardContainer extends Component {
   constructor() {
     super(...arguments);
     this.state = {
-      cards: []
+      cards: [],
+      boardNames: [],
+      selectedBoardName: ""
     };
     //throttle(this.updateCardStatus.bind(this));
     //throttle(this.updateCardPosition.bind(this),500);
@@ -17,17 +19,22 @@ class KanbanBoardContainer extends Component {
 
   componentDidMount() {
     this.database = new DatabaseController();
+
     var localData = this.database.getDataFromLocalStorage();
-    this.setState({cards: localData});
+    if (localData)
+      this.setState(localData);
+
     this.database.connect();
-    this.database.getDataFromServer(
-      (data) => {
-        this.setState({cards: data}); 
-      }
-    );
+    this.database.authUser(() => {
+      this.database.getDataFromServer(
+        (data) => {
+          this.setState(data); 
+        }
+      );
+    });   
 
     window.onbeforeunload = () => {
-      this.database.saveDataToLocalStorage(this.state.cards);
+      this.database.saveDataToLocalStorage(this.state);
     };
   }
 
@@ -206,6 +213,53 @@ class KanbanBoardContainer extends Component {
     this.setState(nextState);
   }
 
+  addBoard(boardName) {
+    let prevState = this.state;
+
+    let newBoardNames = this.state.boardNames.slice();
+    newBoardNames.push(boardName);
+    this.setState({
+      selectedBoardName: boardName,
+      cards: [],
+      boardNames: newBoardNames
+    });
+
+    this.database.addBoard(boardName, () => {
+      this.setState(prevState);
+    });
+  }
+
+  removeBoard(boardName) {
+    let prevState = this.state;
+
+    let newBoardNames = this.state.boardNames.slice();
+    newBoardNames.splice(newBoardNames.indexOf(boardName), 1);
+    this.setState({
+      boardNames: newBoardNames
+    });
+
+    this.database.removeBoard(
+      boardName,
+      () => {
+        this.selectBoard(newBoardNames[0]);
+      },
+      (error) => {
+        this.setState(preState);
+      }
+    );
+  }
+
+  selectBoard(boardName) {
+    this.database.selectBoard(boardName);
+
+    this.database.getCardsByBoardName(boardName, (cards) => {
+      this.setState({
+        cards: cards,
+        selectedBoardName: boardName
+      });
+    });
+  }
+
   render() {
     let kanbanBoard = this.props.children && React.cloneElement(this.props.children, {
       cards: this.state.cards,
@@ -221,6 +275,13 @@ class KanbanBoardContainer extends Component {
         moveCard: this.moveCard.bind(this),
         persistCardDrag: this.persistCardDrag.bind(this)
       },
+      boardCallbacks: {
+        addBoard: this.addBoard.bind(this),
+        removeBoard: this.removeBoard.bind(this),
+        selectBoard: this.selectBoard.bind(this)
+      },
+      boards: this.state.boardNames,
+      selectedBoard: this.state.selectedBoardName,
       moveCardInList: this.moveCardInList.bind(this)
     });
     return kanbanBoard;

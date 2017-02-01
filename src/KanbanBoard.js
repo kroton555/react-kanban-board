@@ -1,9 +1,10 @@
 import React, {Component, PropTypes} from 'react';
 import { DragDropContext } from 'react-dnd';
 import HTML5Backend from 'react-dnd-html5-backend';
-import { Link } from 'react-router';
-import List from './List';
+import {Link} from 'react-router';
 import constants from './constants';
+import BoardSelect from './BoardSelect';
+import List from './List';
 
 class KanbanBoard extends Component {
   render() {
@@ -14,9 +15,21 @@ class KanbanBoard extends Component {
 
     return (
       <div className="kanban-board">
-        <Link to={constants.SITE_ROOT + "new"} className="float-button">+</Link>
+        <header className="header">
+          <div className="container-with-paddings clearfix">
+            <Link to={constants.SITE_ROOT + "new"} className="add-card-btn">
+              Добавить карточку
+            </Link>
+            
+            <BoardSelect 
+              boards={this.props.boards} 
+              selectedBoard={this.props.selectedBoard}
+              boardCallbacks={this.props.boardCallbacks}
+            />
+          </div>
+        </header>
 
-        <div className="list-wrapper">
+        <div className="list-wrapper container">
           <List 
             id='todo' 
             title="Запланировано" 
@@ -53,7 +66,10 @@ KanbanBoard.propTypes = {
   cards: PropTypes.arrayOf(PropTypes.object),
   taskCallbacks: PropTypes.object,
   cardCallbacks: PropTypes.object,
-  moveCardInList: PropTypes.func.isRequired    
+  boardCallbacks: PropTypes.object,
+  selectedBoard: PropTypes.string,
+  boards: PropTypes.arrayOf(PropTypes.string),
+  moveCardInList: PropTypes.func.isRequired
 };
 
 export default DragDropContext(HTML5Backend)(KanbanBoard);
