@@ -43,7 +43,20 @@ body {
     background-color: #ccc;
 }
 
+.logo {
+    display: block;
+    float: left;
+    font-weight: bold;
+    font-style: italic;
+    font-size: 32px;
+    letter-spacing: 2px;
+    line-height: 38px;
+    text-transform: uppercase;
+    color: #D43A2F;
+}
+
 .list-wrapper {
+    display: block;
     display: flex;
     flex-grow: 2;
 }

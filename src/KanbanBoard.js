@@ -17,6 +17,10 @@ class KanbanBoard extends Component {
       <div className="kanban-board">
         <header className="header">
           <div className="container-with-paddings clearfix">
+            <div className="logo">
+              Канбан
+            </div>
+
             <Link to={constants.SITE_ROOT + "new"} className="add-card-btn">
               Добавить карточку
             </Link>
